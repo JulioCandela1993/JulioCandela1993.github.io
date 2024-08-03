@@ -1,7 +1,7 @@
 body {
-    font-family: 'Georgia', serif;
+    font-family: 'Open Sans';
     color: #333;
-    background-color: #ffffff;
+    background-color: #f6f2eb;
     margin: 0;
     padding: 0;
 }
@@ -42,7 +42,7 @@ nav a:hover {
     max-width: 800px;
     margin: 100px auto 20px;
     padding: 20px;
-    background-color: #ffffff;
+    background-color: #f6f2eb;
     text-align: center;
 }
 h1, h2 {
