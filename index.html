@@ -7,29 +7,172 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
         }
-        .pdf-container {
+        .container {
             width: 80%;
-            height: 90%;
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        iframe {
+        h1, h2 {
+            color: #333;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section-title {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .section-content {
+            padding: 10px;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .contact-info div {
+            flex: 1;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <div class="pdf-container">
-        <iframe src="mypdf.pdf" title="Your PDF CV"></iframe>
+    <div class="container">
+        <h1>Your Name</h1>
+        <div class="contact-info">
+            <div>
+                <p>Email: your.email@example.com</p>
+                <p>Phone: (123) 456-7890</p>
+            </div>
+            <div>
+                <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">yourprofile</a></p>
+                <p>GitHub: <a href="https://github.com/yourusername" target="_blank">yourusername</a></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <h2>Profile</h2>
+            </div>
+            <div class="section-content">
+                <p>A brief introduction about yourself, your experience, and your goals.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <h2>Education</h2>
+            </div>
+            <div class="section-content">
+                <p><strong>Degree</strong> - University Name (Year of Graduation)</p>
+                <p>Relevant coursework, honors, or other achievements.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <h2>Experience</h2>
+            </div>
+            <div class="section-content">
+                <p><strong>Job Title</strong> - Company Name (Start Date - End Date)</p>
+                <ul>
+                    <li>Describe your role and responsibilities.</li>
+                    <li>Highlight key achievements or projects.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">
+                <h2>Skills</h2>
+            </div>
+            <div class="section-content">
+                <p>List your key skills, such as programming languages, tools, etc.</p>
+            </div>
+        </div>
+
+        <!-- Link to open PDF in modal -->
+        <div class="section">
+            <div class="section-content">
+                <a href="#" id="openModal">View Portfolio (PDF)</a>
+            </div>
+        </div>
     </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <embed src="mypdf.pdf" type="application/pdf" width="100%" height="600px" />
+        </div>
+    </div>
+
+    <script>
+        // Get modal element
+        var modal = document.getElementById("myModal");
+        // Get open modal button
+        var openModal = document.getElementById("openModal");
+        // Get close button
+        var closeModal = document.getElementsByClassName("close")[0];
+
+        // Listen for open click
+        openModal.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // Listen for close click
+        closeModal.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Listen for outside click
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
